@@ -11,7 +11,8 @@ window.addEventListener("load", function() {
 	document.querySelector("#play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
-		console.log("Volume: " + (video.volume * 100) + "%");
+		//console.log("Volume: " + (video.volume * 100) + "%");
+		document.querySelector("#volume").textContent = Math.round(video.volume * 100) + "%";
 	});
 	document.querySelector("#pause").addEventListener("click", function() {
 		console.log("Pause Video");
@@ -33,14 +34,16 @@ window.addEventListener("load", function() {
         if (video.currentTime > video.duration) {
             video.currentTime = video.duration;
         }
-        console.log("Current Time: " + video.currentTime);
+        console.log("Video current time is " + video.currentTime);
     });
 	document.querySelector("#mute").addEventListener("click", function() {
         if (video.muted) {
             video.muted = false;
+			this.textContent = "Mute";
             console.log("Unmuted");
         } else {
             video.muted = true;
+			this.textContent = "Unmute";
             console.log("Muted");
         }
     });
